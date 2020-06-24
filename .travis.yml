@@ -3,6 +3,7 @@ node_js:
   - "stable"
 services:
   - postgresql
+  - redis-server
 before_script:
   - psql -c "create database website_messages;" -U postgres
   - psql -c "ALTER USER postgres with PASSWORD 'postgres';" -U postgres
