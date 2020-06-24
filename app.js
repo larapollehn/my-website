@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 
-const dataAccess = require('./src/data/DataAccess');
+const sqlAccess = require('./src/data/SQLAccess');
 const contactRouter = require('./src/routes/ContactRouter');
 const projectRouter = require('./src/routes/ProjectRouter');
 
@@ -17,7 +17,7 @@ function initialize() {
             if (err) {
                 throw err;
             } else {
-                dataAccess.query(data, (error, result) => {
+                sqlAccess.query(data, (error, result) => {
                     if(error){
                         throw error;
                     }

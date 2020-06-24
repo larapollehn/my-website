@@ -1,4 +1,4 @@
-const dataAccess = require('../data/DataAccess');
+const sqlAccess = require('../data/SQLAccess');
 
 const checkCache = (request, response) => {
 

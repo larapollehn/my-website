@@ -13,6 +13,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=website_messages
+      - REDIS_HOST=redis
     depends_on:
       - db
       - redis

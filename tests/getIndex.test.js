@@ -1,5 +1,6 @@
 const app = require("../app");
-const pool = require("../src/data/DataAccess");
+const sqlAccess = require("../src/data/SQLAccess");
+const redisAccess = require("../src/data/RedisAccess");
 const request = require('supertest');
 
 describe('Test GET Index', () => {
@@ -16,8 +17,17 @@ describe('Test GET Index', () => {
             });
     });
 
+    test('redis works', done => {
+        redisAccess.setex('test', 1800, 'test case works');
+        redisAccess.get('test', (err, data) => {
+            expect(data).toBe("test case works");
+            done();
+        });
+    })
+
     afterAll(done => {
-        pool.end();
+        redisAccess.end();
+        sqlAccess.end();
         done();
     })
 });
