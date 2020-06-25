@@ -91,8 +91,9 @@ function saveMessage(expressRequest, expressResponse) {
     const ip = expressRequest.connection.remoteAddress;
     log.debug("Following message was sent to user and will be persisted: ", ip, senderName, senderEmail, subject, message);
     sqlAccess
-        .query('INSERT INTO messages (sendername, email, subject, message, senddate, sendertoken, senderip) VALUES ($1, $2, $3, $4, $5, $6, $7)',
-            [senderName, senderEmail, subject, message, new Date().toISOString(), obtainedToken, ip],
+        .query({name: "new-message",
+            text: 'INSERT INTO messages (sendername, email, subject, message, senddate, sendertoken, senderip) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+            values: [senderName, senderEmail, subject, message, new Date().toISOString(), obtainedToken, ip]},
             (error, result) => {
                 if (error) {
                     log.error("Message could not be persisted, error: ", error);
