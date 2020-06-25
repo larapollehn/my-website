@@ -24,6 +24,6 @@ prefix.apply(log.getLogger('critical'), {
     },
 });
 
-log.setLevel(process.env.LOG_LEVEL);
+log.setLevel(process.env.LOG_LEVEL || "info");
 log.info("Current logging level", process.env.LOG_LEVEL);
 module.exports = log;

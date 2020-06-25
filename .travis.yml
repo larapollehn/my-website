@@ -9,4 +9,5 @@ before_script:
   - psql -c "ALTER USER postgres with PASSWORD 'postgres';" -U postgres
   - npm install --silent
 script:
+  - cp .env.example .env
   - npm run test
