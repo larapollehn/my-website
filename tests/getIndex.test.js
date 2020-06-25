@@ -8,7 +8,7 @@ describe('Test GET Index', () => {
         done();
     });
 
-    test('Response is http code 200', done => {
+    test('Postgres db works', done => {
         request(app)
             .get('/')
             .then(response => {

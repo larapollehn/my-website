@@ -1,3 +1,4 @@
+require('dotenv').config();
 const app = require('./app');
 
-app.listen(3008);
+app.listen(3009);
