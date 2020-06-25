@@ -1,5 +1,4 @@
 const express = require('express');
-
 const contactService = require('./../services/ContactServices');
 
 const contactRouter = express.Router();

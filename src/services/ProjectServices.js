@@ -9,6 +9,5 @@ const getProjects = (request, response) => {
 }
 
 module.exports = {
-    checkCache,
     getProjects
 }
