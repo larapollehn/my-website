@@ -49,6 +49,7 @@ function displayProjects(projectData) {
 
         let projectDiv = document.createElement('div');
         projectDiv.classList.add('row');
+        projectDiv.classList.add('no-gutters');
 
         projectDiv.innerHTML = `
            <div class="col-md-7">

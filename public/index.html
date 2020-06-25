@@ -10,44 +10,49 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-    <a class="navbar-brand" href="#">larapollehn.de</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="container-fluid no-gutters">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">larapollehn.de</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About Me</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Portfolio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="startView">
+        <div  id="hero-image-container">
+            <img id="hero-image" src="./images/hero-bg.jpg" alt="heroImage">
+        </div>
+        <section id="hero" class="row no-gutters  hero-content">
+            <div class="col-sm-6 hero-left-col">
+                <img id="avatarIcon"
+                     src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png"
+                     alt="githubAvatarIcon">
+            </div>
+            <div class="col-sm-6 hero-right-col">
+                <p class="heroTitle">Lara Pollehn</p>
+                <p class="heroTitle">Software Developer</p>
+                <button class="btn btn-large btn-danger">Contact me</button>
+            </div>
+        </section>
     </div>
-</nav>
 
-<div id="mainContent" class="container-fluid">
-    <section id="hero" class="row">
-        <div class="col-sm-6 hero-left-col">
-            <img id="avatarIcon"
-                 src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png"
-                 alt="githubAvatarIcon">
-        </div>
-        <div class="col-sm-6 hero-right-col">
-            <p class="heroTitle">Lara Pollehn</p>
-            <p class="heroSubTitle">Software Developer</p>
-            <button class="btn btn-large btn-danger">Contact me</button>
-        </div>
-    </section>
     <section id="about">
         <div>
             <p id="aboutTitle">About me</p>
@@ -55,7 +60,7 @@
                 sunt temporibus voluptas. Atque autem, eaque facilis fugiat non sed veritatis voluptates. Omnis, quidem
                 sit!</p>
         </div>
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-sm-4">
                 <img class="aboutMeIcon"
                      src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
@@ -78,7 +83,7 @@
                 <p class="aboutName">Selftaught Developer</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-md-6 stack-left">
                 <p class="techStack">Programming Languages</p>
             </div>
@@ -133,7 +138,7 @@
 
     </section>
 
-    <section id="contact" class="row">
+    <section id="contact" class="row no-gutters">
         <div>
             <p id="contactTitle">Lets Get in Contact</p>
         </div>
@@ -161,22 +166,22 @@
 
         </div>
     </section>
+
+    <footer>
+        <br>
+        <p>Lets stay connected!</p>
+        <a target="_blank" href="https://github.com/larapollehn" class="socialName">
+            <img id="githubLink" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                 class="socialLink"/>
+        </a>
+        <a target="_blank" href="https://www.linkedin.com/in/lara-pollehn-2615681a5/"
+           class="socialName">
+            <img id="linkedInLink" src="https://image.flaticon.com/icons/svg/61/61109.svg" class="socialLink"/>
+        </a>
+        <p>2020 | Made by Lara Pollehn | <a href="#">github</a></p>
+    </footer>
+
 </div>
-
-<footer>
-    <br>
-    <p>Lets stay connected!</p>
-    <a target="_blank" href="https://github.com/larapollehn" class="socialName">
-        <img id="githubLink" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" class="socialLink"/>
-    </a>
-    <a target="_blank" href="https://www.linkedin.com/in/lara-pollehn-2615681a5/"
-       class="socialName">
-        <img id="linkedInLink" src="https://image.flaticon.com/icons/svg/61/61109.svg" class="socialLink"/>
-    </a>
-    <p>2020 | Made by Lara Pollehn | <a href="#">github</a></p>
-</footer>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
