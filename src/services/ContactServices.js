@@ -15,12 +15,12 @@ console.assert(EMAILPW !== null && EMAILPW !== undefined, "Email Sender's passwo
 console.assert(HOST !== null && HOST !== undefined, "Email Sender's SMTP host is not set. Did you set the environment variable properly?");
 console.assert(RECAPTCHA_TOKEN !== null && RECAPTCHA_TOKEN !== undefined, "Google reCaptcha2 Secret Token is not set. Did you set the environment variable properly?");
 console.assert(MUST_VERIFY_MESSAGE !== null && MUST_VERIFY_MESSAGE !== undefined, "Flag mustVerifyToken is not set. Did you set the environment variable properly?");
-log.debug("Contact service with receiver", RECEIVER);
-log.debug("Contact service with sender", SENDER);
-log.debug("Contact service with password", EMAILPW);
-log.debug("Contact service with SMTP host", HOST);
-log.debug("Contact service with recaptcha's secret", RECAPTCHA_TOKEN);
-log.debug("Contact service with receiver's email", MUST_VERIFY_MESSAGE);
+log.debug("Contact service with receiver:", RECEIVER);
+log.debug("Contact service with sender:", SENDER);
+log.debug("Contact service with password:", EMAILPW);
+log.debug("Contact service with SMTP host:", HOST);
+log.debug("Contact service with recaptcha's secret:", RECAPTCHA_TOKEN);
+log.debug("Contact service with receiver's email:", MUST_VERIFY_MESSAGE);
 
 const sendMail = (expressRequest, expressResponse) => {
     log.debug("Incoming message for owner from contact form");
@@ -31,14 +31,18 @@ const sendMail = (expressRequest, expressResponse) => {
         axios.post('https://www.google.com/recaptcha/api/siteverify?' + 'secret=' + RECAPTCHA_TOKEN + '&response=' + obtainedToken)
             .then((googleResponse) => {
                 if (googleResponse.data['success'] === true) {
+                    log.debug("Message verified successful", googleResponse.data);
                     processMessages(expressRequest, expressResponse);
                 } else {
+                    log.debug("Message can not be verified", googleResponse.data);
                     expressResponse.status(400).send('Verification not a success');
                 }
             }).catch((error) => {
+            log.error("Can not verify user", error);
             expressResponse.status(500).send(JSON.stringify(error));
         });
     } else {
+        log.warn("The current mode allow every message to reach the user. If this is not intended, please turn the filter on to avoid spam.");
         log.debug("Incoming message does not have to be verified. Process to save message in database and send message to owner");
         processMessages(expressRequest, expressResponse);
     }
@@ -49,7 +53,7 @@ function processMessages(expressRequest, expressResponse) {
         log.debug("Notifying user is successful. Process to save Message");
         saveMessage(expressRequest, expressResponse);
     }).catch((mailError) => {
-        log.debug("Notifying user failed. Following error was sent back: ", mailError);
+        log.error("Notifying user failed. Following error was sent back: ", mailError);
         expressResponse.status(400).send(JSON.stringify(mailError));
     })
 }
@@ -91,7 +95,7 @@ function saveMessage(expressRequest, expressResponse) {
             [senderName, senderEmail, subject, message, new Date().toISOString(), obtainedToken, ip],
             (error, result) => {
                 if (error) {
-                    log.debug("Message could not be persisted, error: ", error);
+                    log.error("Message could not be persisted, error: ", error);
                     expressResponse.status(500).send("An error happened.")
                 } else {
                     log.debug("Message persisted successful.");

@@ -3,11 +3,11 @@ const prefix = require('loglevel-plugin-prefix');
 const chalk = require('chalk');
 
 const colors = {
-    TRACE: chalk.magenta,
-    DEBUG: chalk.cyan,
-    INFO: chalk.blue,
-    WARN: chalk.yellow,
-    ERROR: chalk.red,
+    TRACE: chalk.hex("#0022ff"),
+    DEBUG: chalk.hex("#19ff00"),
+    INFO: chalk.hex("#ffffff"),
+    WARN: chalk.hex("#ff8100"),
+    ERROR: chalk.hex("#ff0000"),
 };
 
 prefix.reg(log);
@@ -24,16 +24,6 @@ prefix.apply(log.getLogger('critical'), {
     },
 });
 
-switch (process.env.LOG_LEVEL) {
-    case "debug":
-        log.setDefaultLevel(log.levels.DEBUG);
-        break;
-    case "info":
-        log.setDefaultLevel(log.levels.INFO);
-        break;
-    default:
-        log.setDefaultLevel(log.levels.WARN);
-        break;
-}
-
+log.setLevel(process.env.LOG_LEVEL);
+log.info("Current logging level", process.env.LOG_LEVEL);
 module.exports = log;
