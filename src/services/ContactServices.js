@@ -78,7 +78,7 @@ function notify(expressRequest, expressResponse) {
         from: SENDER,
         to: RECEIVER,
         subject: "Contact email from your website",
-        text: `From: ${senderName} - Mail: ${senderEmail} - Subject: ${subject} - Message: ${message}`
+        text: `From: ${senderName} \n Mail: ${senderEmail} \n Subject: ${subject} \n Message: ${message}`
     });
 
 }

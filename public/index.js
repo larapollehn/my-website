@@ -1,9 +1,9 @@
 function sendMail() {
     const token = grecaptcha.getResponse();
-    const sendername = 'Jane Doe';
-    const sendermail = 'jane@doe.de';
-    const subject = 'test mail';
-    const message = 'Hello this is a test mail to test the mail service';
+    const sendername = document.getElementById('senderName').value || 'unknown';
+    const sendermail = document.getElementById('senderMail').value || 'unknown';
+    const subject = document.getElementById('subject').value || ' ';
+    const message = document.getElementById('message').value || ' ';
 
     axios({
         method: 'POST',
