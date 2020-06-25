@@ -1,0 +1,22 @@
+
+#avatarIcon{
+    width: 200px;
+    height: auto;
+    border-radius: 90%;
+}
+
+.aboutMeIcon{
+    width: 200px;
+    height: auto;
+    border-radius: 90%;
+}
+
+.techStack{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.techStackImage{
+    width: 30%;
+    height: auto;
+}

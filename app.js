@@ -34,6 +34,6 @@ const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/api', contactRouter);
-app.use('/api', projectRouter);
+app.use('/api/v1', contactRouter);
+app.use('/api/v2', projectRouter);
 module.exports = app;

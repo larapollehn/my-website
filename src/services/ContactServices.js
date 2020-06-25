@@ -1,13 +1,14 @@
 const axios = require('axios');
 const nodemailer = require("nodemailer");
 const sqlAccess = require('../data/SQLAccess');
+const log = require("../log/Logger");
+
 const RECAPTCHA_TOKEN = process.env.RECAPTCHA_TOKEN;
 const EMAILPW = process.env.MAILPWD;
 const SENDER = process.env.SENDER;
 const RECEIVER = process.env.RECEIVER;
 const HOST = process.env.HOST;
 const MUST_VERIFY_MESSAGE = process.env.MUST_VERIFY_MESSAGE;
-const log = require("../log/Logger");
 
 console.assert(RECEIVER !== null && RECEIVER !== undefined, "Email Receiver is not set. Did you set the environment variable properly?");
 console.assert(SENDER !== null && SENDER !== undefined, "Email Sender is not set. Did you set the environment variable properly?");

@@ -2,18 +2,162 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lara Pollehn</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-<section id="contactSection">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">larapollehn.de</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About Me</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div id="mainContent" class="container-fluid">
+    <section id="hero" class="row">
+        <div class="col-sm-6 hero-left-col">
+            <img id="avatarIcon" src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt="githubAvatarIcon">
+        </div>
+        <div class="col-sm-6 hero-right-col">
+            <p class="heroTitle">Lara Pollehn</p>
+            <p class="heroSubTitle">Software Developer</p>
+            <button class="btn btn-large btn-danger">Contact me</button>
+        </div>
+    </section>
+    <section id="about">
+        <div>
+            <p id="aboutTitle">About me</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci et iure maxime natus nesciunt, soluta sunt temporibus voluptas. Atque autem, eaque facilis fugiat non sed veritatis voluptates. Omnis, quidem sit!</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="aboutMeIcon" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="bachelorIcon">
+                <p class="aboutDate">2015-2018</p>
+                <p class="aboutName">B.Sc. Business Engineering</p>
+            </div>
+            <div class="col-sm-4">
+                <img class="aboutMeIcon" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="networkIon">
+                <p class="aboutDate">2018-2019</p>
+                <p class="aboutName">Junior Network Admin</p>
+            </div>
+            <div class="col-sm-4">
+                <img class="aboutMeIcon" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="selfthaughtIcon">
+                <p class="aboutDate">2019-Now</p>
+                <p class="aboutName">Selftaught Developer</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 stack-left">
+                <p class="techStack">Programming Languages</p>
+            </div>
+            <div class="col-md-6 stack-right">
+                <img class="techStackImage" src="https://www.yarrah.com/en/wp-content/uploads/sites/10/2019/01/Puppy-aanschaffen-header-800x600.png" alt="techStackIcon1">
+                <img class="techStackImage" src="https://www.yarrah.com/en/wp-content/uploads/sites/10/2019/01/Puppy-aanschaffen-header-800x600.png" alt="techStackIcon2">
+                <img class="techStackImage" src="https://www.yarrah.com/en/wp-content/uploads/sites/10/2019/01/Puppy-aanschaffen-header-800x600.png" alt="techStackIcon3">
+            </div>
+
+            <div class="col-md-6 stack-left">
+                <p class="techStack">Framework & Libraries</p>
+            </div>
+            <div class="col-md-6 stack-right">
+                <img class="techStackImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSp1_xbiA8VMJ_LodNPDDXkNsqPT5VfJ-sMIg&usqp=CAU" alt="techStack4">
+                <img class="techStackImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSp1_xbiA8VMJ_LodNPDDXkNsqPT5VfJ-sMIg&usqp=CAU" alt="techStack5">
+                <img class="techStackImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSp1_xbiA8VMJ_LodNPDDXkNsqPT5VfJ-sMIg&usqp=CAU" alt="techStack6">
+            </div>
+
+            <div class="col-md-6 stack-left">
+                <p class="techStack">Tools & Technologies</p>
+            </div>
+            <div class="col-md-6 stack-right">
+                <img class="techStackImage" src="https://www.tagesspiegel.de/images/isolated-on-hamster-pets-animal-mammal-red-one-tiptoe-fun-paw-pest-animals-life-fur-mischief-close-up-fluffy-curiosity-cute-portrait-small-humor-surprise-hair-whisker-domestic-nose-rodent/25609202/3-format43.jpg" alt="techStack7">
+                <img class="techStackImage" src="https://www.tagesspiegel.de/images/isolated-on-hamster-pets-animal-mammal-red-one-tiptoe-fun-paw-pest-animals-life-fur-mischief-close-up-fluffy-curiosity-cute-portrait-small-humor-surprise-hair-whisker-domestic-nose-rodent/25609202/3-format43.jpg" alt="techStack8">
+                <img class="techStackImage" src="https://www.tagesspiegel.de/images/isolated-on-hamster-pets-animal-mammal-red-one-tiptoe-fun-paw-pest-animals-life-fur-mischief-close-up-fluffy-curiosity-cute-portrait-small-humor-surprise-hair-whisker-domestic-nose-rodent/25609202/3-format43.jpg" alt="techStack9">
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="row">
+        <div class="row">
+            <div class="col-md-8">
+                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
+            </div>
+            <div class="col-md-4">
+                <p>ProjectName</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
+                <p>language1, language 2, language 3</p>
+                <button>Code</button><button>Preview</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
+            </div>
+            <div class="col-md-4">
+                <p>ProjectName</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
+                <p>language1, language 2, language 3</p>
+                <button>Code</button><button>Demo</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
+            </div>
+            <div class="col-md-4">
+                <p>ProjectName</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
+                <p>language1, language 2, language 3</p>
+                <button>Code</button><button>Demo</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
+            </div>
+            <div class="col-md-4">
+                <p>ProjectName</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
+                <p>language1, language 2, language 3</p>
+                <button>Code</button><button>Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="row">
         <div class="g-recaptcha" data-sitekey="6LftnKUZAAAAAKMvV9V52nlmaFV8T2kvKSqhVfcp"></div>
-        <br/>
-    <button id="sendContactMessageBtn" onclick="sendMail()">send</button>
-</section>
+        <button id="sendContactMessageBtn" onclick="sendMail()">send</button>
+    </section>
+</div>
+
+<footer>
+    <p>2020 | Made by Lara Pollehn | <a href="#">github</a></p>
+</footer>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script src="index.js"></script>
 </body>
 </html>
