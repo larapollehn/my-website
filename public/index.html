@@ -98,56 +98,38 @@
 
     <section id="portfolio">
         <div>
-            <p id="portfolioTitle">Recent Projects</p></div>
-        <div class="row">
-            <div class="col-md-8">
-                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
-            </div>
-            <div class="col-md-4">
-                <p>ProjectName</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
-                <p>language1, language 2, language 3</p>
-                <button>Code</button><button>Demo</button>
-            </div>
+            <p id="portfolioTitle">Recent Projects</p>
         </div>
-        <div class="row">
-            <div class="col-md-8">
-                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
-            </div>
-            <div class="col-md-4">
-                <p>ProjectName</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
-                <p>language1, language 2, language 3</p>
-                <button>Code</button><button>Demo</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
-            </div>
-            <div class="col-md-4">
-                <p>ProjectName</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
-                <p>language1, language 2, language 3</p>
-                <button>Code</button><button>Demo</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <img src="https://lh3.googleusercontent.com/proxy/grl4Ss7sVK9SQ2dLXNCWXVRrcoRvqOCDsQrCK-Zm4i9Br0xob9tENRGLekFzSIb2X-_vi-ihIWIoilu-Czba7dNa3v87C0lKt82feUa3E_rq5ZKBkW9vrQ" alt="projectImage">
-            </div>
-            <div class="col-md-4">
-                <p>ProjectName</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur error ex fuga laboriosam minus molestias nobis perferendis placeat quidem veritatis?</p>
-                <p>language1, language 2, language 3</p>
-                <button>Code</button><button>Demo</button>
-            </div>
-        </div>
+
     </section>
 
     <section id="contact" class="row">
-        <div class="g-recaptcha" data-sitekey="6LftnKUZAAAAAKMvV9V52nlmaFV8T2kvKSqhVfcp"></div>
-        <button id="sendContactMessageBtn" onclick="sendMail()">send</button>
+        <div>
+            <p id="contactTitle">Lets Get in Contact</p>
+        </div>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name...">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" placeholder="Subject...">
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LftnKUZAAAAAKMvV9V52nlmaFV8T2kvKSqhVfcp"></div>
+            <button id="sendContactMessageBtn" onclick="sendMail()">send</button>
+        </form>
+
     </section>
 </div>
 

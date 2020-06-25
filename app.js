@@ -35,5 +35,5 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api/v1', contactRouter);
-app.use('/api/v2', projectRouter);
+app.use('/api/v1', projectRouter);
 module.exports = app;
