@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS messages (
     subject VARCHAR(100),
     message VARCHAR(512) NOT NULL,
     senddate DATE NOT NULL,
-    sendertoken VARCHAR(100) UNIQUE,
+    sendertoken VARCHAR(100),
     senderip VARCHAR(15)
 );
