@@ -11,6 +11,8 @@ before_script:
 script:
 - cp .env.example .env
 - npm run test
+- eval $(ssh-agent -s)
+- ssh-add deploy_rsa
 - ssh -o StrictHostKeyChecking=no lara@larapollehn.de "cd my-website && git pull &&
   docker-compose up -d --build"
 before_install:
