@@ -5,9 +5,6 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-section{
-    padding-top: 40px;
-}
 
 .container-fluid{
     padding: 0;
@@ -22,17 +19,25 @@ nav{
     z-index: 3;
 }
 
+.navbar{
+    background-color: #212529;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
 .navbar-light .navbar-nav .nav-link {
-    color: rgba(135, 5, 5, 0.89);
+    color: rgba(196, 192, 192, 0.89);
     font-weight: bold;
 }
 .navbar-light:hover .navbar-nav:hover .nav-link:hover {
-    color: rgba(194, 10, 10, 0.89);
+    color: rgba(236, 233, 233, 0.94);
     font-weight: bold;
 }
 
 .navbar-light .navbar-brand {
-    color: rgba(0,0,0,.9);
+    color: whitesmoke;
 }
 
 #hero-image-container{
@@ -98,12 +103,16 @@ nav{
     border-color: rgba(135, 5, 5, 0.89);
  }
 .btn:hover{
-    background-color: rgba(194, 10, 10, 0.89)
+    background-color: rgba(194, 10, 10, 0.89);
 }
 
 .sectionTitle{
     font-size: 40px;
     font-weight: bold;
+}
+
+.sectionTopMargin{
+    margin-top: 40px;
 }
 
 #about{
@@ -114,44 +123,60 @@ nav{
     padding-left: 20%;
     padding-right: 20%;
     font-size: 20px;
+    margin-bottom: 70px;
 }
 .aboutDate{
     font-size: 20px;
+    margin-bottom: 0;
 }
 .aboutName{
     font-size: 22px;
     font-family: 'Poppins', sans-serif;
-}
-
-.aboutTitle{
-    margin-bottom: 0;
+    margin-bottom: 80px;
 }
 
 .imageDiv{
-    background-color: cornflowerblue;
     width: 200px;
-    margin: 0 auto;
-    border-radius: 90%;
+    margin: 10px auto;
+    border-radius: 25px;
 }
-
 .aboutMeIcon{
     width: 150px;
     height: auto;
 }
 
 .imageRow{
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
+}
+
+.grey-Row{
+    background-color: #212529;
+    color: whitesmoke;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .techStack{
     font-size: 30px;
     font-weight: bolder;
+    text-align: left;
+    padding-left: 20%;
+    margin-bottom: 0;
 }
 
 .techStackImage{
-    width: 30%;
+    width: 15%;
     height: auto;
+    margin: 7.5% 7.5%0 7.5%;
+}
+
+.stack-left{
+    height: 150px;
+    line-height: 150px;
+}
+.stack-right{
+    height: 150px;
 }
 
 .projectImage{
@@ -179,6 +204,21 @@ nav{
 
     .heroSubTitle{
         font-size: 30px;
+    }
+
+    .techStack{
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+    .stack-left{
+        height: 50px;
+        line-height: 50px;
+    }
+    .stack-right{
+        height: 100px;
+        margin-bottom: 30px;
     }
 
     #avatarIcon{

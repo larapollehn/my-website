@@ -43,7 +43,6 @@ function displayAvatarIcon(projectData) {
 function displayProjects(projectData) {
     let projectContainer = document.getElementById('portfolio');
     let projects = projectData['data']['repositoryOwner']['itemShowcase']['items']['edges'];
-    console.log(projects[2]);
     projects.forEach(project => {
         let name = project['node']['name'];
         let description = project['node']['description'];
