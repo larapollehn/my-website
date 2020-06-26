@@ -29,7 +29,7 @@ const getProjects = (expressRequest, expressResponse) => {
                         ... on ProfileOwner {
                           pinnedItemsRemaining
                           itemShowcase {
-                            items(first: 5) {
+                            items(first: 6) {
                               totalCount
                               edges {
                                 node {
@@ -37,6 +37,7 @@ const getProjects = (expressRequest, expressResponse) => {
                                     homepageUrl
                                   }
                                   ... on Repository {
+                                    openGraphImageUrl 
                                     name
                                     description
                                     url

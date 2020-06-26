@@ -127,11 +127,16 @@ nav{
     margin-bottom: 0;
 }
 
-.aboutMeIcon{
+.imageDiv{
+    background-color: cornflowerblue;
     width: 200px;
-    height: auto;
+    margin: 0 auto;
     border-radius: 90%;
-    margin: 30px 0;
+}
+
+.aboutMeIcon{
+    width: 150px;
+    height: auto;
 }
 
 .imageRow{
