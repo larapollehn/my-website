@@ -51,24 +51,34 @@ function displayProjects(projectData) {
         let homepageUrl = project['node']['homepageUrl']
         let language_one = project['node']['languages']['edges'][0]['node']['name'];
         let language_two = project['node']['languages']['edges'][1]['node']['name'];
-        let language_three = project['node']['languages']['edges'][1]['node']['name'];
+        let language_three = project['node']['languages']['edges'][2]['node']['name'];
 
         let projectDiv = document.createElement('div');
         projectDiv.classList.add('row');
         projectDiv.classList.add('no-gutters');
+        projectDiv.classList.add('projectRow');
 
         projectDiv.innerHTML = `
-           <div class="col-md-7">
+                <div class="col-md-6 projectImageDiv">
                     <img class="projectImage" src="${imageUrl}" alt="projectImage">
                 </div>
-                <div class="col-md-5">
-                    <p>${name}</p>
-                    <p>${description}</p>
-                    <p>#${language_one} #${language_two} #${language_three}</p>
-                    <a href="${repoUrl}" target="_blank">Code</a> <a href="${homepageUrl}" target="_blank">Demo</a>
-                </div>
+                <div class="col-md-6 projectText paddingRightCol">
+                    <p class="projectTitle">${capitalizeName(name)}</p>
+                    <p class="projectDescription">${description}</p>
+                    <p class="projectLanguages">#${language_one} #${language_two} #${language_three}</p>
+                    <div><a href="${repoUrl}" target="_blank" class="projectLink">Code</a> <a href="${homepageUrl}" target="_blank" class="projectLink">Demo</a></div>
+                </div>   
            `;
 
         projectContainer.appendChild(projectDiv);
     });
+}
+
+function capitalizeName(name) {
+    let words = name.split('-');
+    let capitalizedWords = [];
+    for(let i = 0; i <words.length; i++){
+        capitalizedWords.push(`${words[i][0].toUpperCase()}${words[i].substring(1)}`)
+    }
+    return capitalizedWords.join(' ');
 }
