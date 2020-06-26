@@ -7,7 +7,7 @@ services:
     build: .
     restart: always
     ports:
-    - 3008:3000
+    - 3009:3009
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_USER=postgres
