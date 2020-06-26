@@ -11,4 +11,5 @@ before_script:
 script:
   - cp .env.example .env
   - npm run test
+  - echo $KEY
   - ssh lara@larapollehn.de "cd my-website && git pull && docker-compose up -d --build"
