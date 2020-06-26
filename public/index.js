@@ -25,6 +25,7 @@ function sendMail() {
 function getProjectData() {
     axios.get('/api/v1/projects')
         .then((response) => {
+            displayAvatarIcon(response.data);
             displayProjects(response.data);
         }).catch((error) => {
         console.log('Error while fetching project data', error);
@@ -32,6 +33,12 @@ function getProjectData() {
 }
 
 getProjectData();
+
+function displayAvatarIcon(projectData) {
+    let avatarUrl = projectData['data']['repositoryOwner']['avatarUrl'];
+    let iconImage = document.getElementById('avatarIcon');
+    iconImage.setAttribute('src', avatarUrl);
+}
 
 function displayProjects(projectData) {
     let projectContainer = document.getElementById('portfolio');

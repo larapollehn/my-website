@@ -2,6 +2,11 @@ body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+section{
+    padding-top: 40px;
 }
 
 .container-fluid{
@@ -58,22 +63,80 @@ nav{
     z-index: 4;
     height: 100%;
 }
-.hero-right-col{
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
+
+.hero-left-col{
+    text-align: center;
 }
 
 #avatarIcon{
     width: 55%;
     height: auto;
+    top: 50%;
+    position: relative;
+    transform: translateY(-60%);
     border-radius: 90%;
+}
+
+.hero-right-col{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 1;
+}
+.heroTitle{
+    font-size: 100px;
+    font-family: 'Poppins', sans-serif;
+}
+.heroSubTitle{
+    font-size: 40px;
+}
+
+.btn{
+     width: 150px;
+    font-weight: bold;
+    background-color: rgba(135, 5, 5, 0.89);
+    border-color: rgba(135, 5, 5, 0.89);
+ }
+.btn:hover{
+    background-color: rgba(194, 10, 10, 0.89)
+}
+
+.sectionTitle{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#about{
+    text-align: center;
+}
+
+.aboutText{
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size: 20px;
+}
+.aboutDate{
+    font-size: 20px;
+}
+.aboutName{
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.aboutTitle{
+    margin-bottom: 0;
 }
 
 .aboutMeIcon{
     width: 200px;
     height: auto;
     border-radius: 90%;
+    margin: 30px 0;
+}
+
+.imageRow{
+    width: 80%;
+    margin: 0 auto;
 }
 
 .techStack{
@@ -94,4 +157,35 @@ nav{
 .socialLink{
     width: 40px;
     height: auto;
+}
+
+@media only screen and (max-width: 576px){
+    section{
+        padding-top: 0;
+    }
+    .hero-right-col{
+        text-align: center;
+        justify-content: start;
+        line-height: 0.7;
+    }
+    .heroTitle{
+        font-size: 60px;
+    }
+
+    .heroSubTitle{
+        font-size: 30px;
+    }
+
+    #avatarIcon{
+        width: 65%;
+    }
+
+    .aboutText{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .btn{
+        margin: 0 auto;
+    }
 }
