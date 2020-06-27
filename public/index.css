@@ -39,6 +39,7 @@ nav{
     color: whitesmoke;
 }
 
+
 #hero-image-container{
     width: 100%;
 }
@@ -105,6 +106,15 @@ nav{
 .btn:hover{
     background-color: rgba(194, 10, 10, 0.89);
     color: whitesmoke;
+}
+
+.contactBtn {
+    color: whitesmoke;
+    text-decoration: none;
+}
+.contactBtn:hover{
+    color: whitesmoke;
+    text-decoration: none;
 }
 
 .sectionTitle{

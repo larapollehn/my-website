@@ -1,25 +1,31 @@
 function sendMail() {
     const token = grecaptcha.getResponse();
-    const sendername = document.getElementById('senderName').value || 'unknown';
-    const sendermail = document.getElementById('senderMail').value || 'unknown';
-    const subject = document.getElementById('subject').value || ' ';
-    const message = document.getElementById('message').value || ' ';
-
-    axios({
-        method: 'POST',
-        url: '/api/v1/contact',
-        data: {
-            'token': token,
-            'sendername': sendername,
-            'sendermail': sendermail,
-            'subject': subject,
-            'message': message
-        }
-    }).then((response) => {
-        console.log('Verification is a success', response.data);
-    }).catch((error) => {
-        console.log('Verification NOT a success', error.response);
-    })
+    if(token) {
+        const sendername = document.getElementById('senderName').value || 'unknown';
+        const sendermail = document.getElementById('senderMail').value || 'unknown';
+        const subject = document.getElementById('subject').value || ' ';
+        const message = document.getElementById('message').value || ' ';
+        toastr.info('Message is on its way...')
+        axios({
+            method: 'POST',
+            url: '/api/v1/contact',
+            data: {
+                'token': token,
+                'sendername': sendername,
+                'sendermail': sendermail,
+                'subject': subject,
+                'message': message
+            }
+        }).then((response) => {
+            console.log('Verification is a success', response.data);
+            toastr.success('Thanks for sending me a message!', 'It worked');
+        }).catch((error) => {
+            console.log('Verification NOT a success', error.response);
+            toastr.error('Refresh the page and please try again.', 'Something went wrong');
+        });
+    } else {
+        toastr.error('Please verify before sending the message.');
+    }
 }
 
 function getProjectData() {

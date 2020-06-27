@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <div class="container-fluid no-gutters">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
         <a class="navbar-brand" href="#">larapollehn.de</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,13 +26,13 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Me</a>
+                    <a class="nav-link" href="#about">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                 </li>
             </ul>
         </div>
@@ -49,7 +50,7 @@
             <div class="col-sm-6 hero-right-col">
                 <p class="heroTitle">Lara Pollehn</p>
                 <p class="heroSubTitle">Software Developer</p>
-                <button class="btn btn-danger">Contact me</button>
+                <button class="btn btn-danger"><a href="#contact" class="contactBtn">Contact me</a></button>
             </div>
         </section>
     </div>
@@ -57,10 +58,7 @@
     <section id="about">
         <div>
             <p id="aboutTitle" class="sectionTitle sectionTopMargin">About me</p>
-            <p class="aboutText">Besides writing code i love to write Flash Fiction stories and crocheting hats for all those
-                hating cold ears in winter. My interest in
-                coding and problem solving began during my time in university and until this day only grew. But just
-                thinking of it was not enough so i pinned myself in front of the computer and started living my dream.</p>
+            <p class="aboutText">Besides writing code, I love to write Flash Fiction stories and crocheting hats for all those hating cold ears in winter. My interest in coding and problem solving began during my time in university and until this day only grew. But just thinking of it was not enough so I pinned myself in front of the computer and started living my dream.</p>
         </div>
         <div class="row imageRow no-gutters">
             <div class="col-sm-4">
@@ -94,7 +92,7 @@
 
         <div class="grey-Row">
             <p  class="sectionTitle">My Stack</p>
-            <p class="aboutText">For my tech stack i always try to use state of the art technology and build a good mix of classics and rising newcomers. Even though i am focused on Frontend Development i dabble in Fullstack Development too. See a collection of my prefered languages and tools.</p>
+            <p class="aboutText">For my tech stack, i always try to use state of the art technology and build a good mix of classics and rising newcomers. Even though I am focused on Frontend Development I dabble in Fullstack Development too. See a collection of my preferred languages and tools.</p>
             <div class=" row no-gutters imageRow">
                 <div class="col-md-6 stack-left">
                     <p class="techStack">Programming Languages</p>
@@ -142,7 +140,7 @@
                 </div>
 
                 <div class="col-md-6 stack-left">
-                    <p class="techStack">Development Environment</p>
+                    <p class="techStack">Dev. Environment</p>
                 </div>
                 <div class="col-md-6 stack-right">
                     <img class="techStackImage"
@@ -162,6 +160,7 @@
     <section id="portfolio">
         <div class="portfolioTitle">
             <p id="portfolioTitle" class="sectionTitle sectionTopMargin">Recent Projects</p>
+            <p class="aboutText">Below are some of my favourite projects I have done so far, the 6 repositories I pinned on my GitHub profile. The information and shown projects are always up to date and can change since the data is fetched daily from the GitHub GraphQL API.</p>
         </div>
 
     </section>
@@ -169,7 +168,7 @@
     <section id="contact" class="row no-gutters">
 
         <div class="contactForm">
-            <p id="contactTitle">Lets Get in Contact</p>
+            <p id="contactTitle">Let's get in Contact</p>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="senderName">Name</label>
@@ -195,7 +194,7 @@
     </section>
 
     <footer>
-        <p>Lets stay connected!</p>
+        <p>Let's stay connected!</p>
         <a target="_blank" href="https://github.com/larapollehn" class="socialName">
             <img id="githubLink" src="./images/github-image.png"
                  class="socialLink"/>
@@ -209,8 +208,8 @@
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -218,6 +217,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
