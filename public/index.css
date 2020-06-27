@@ -289,6 +289,17 @@ footer{
     margin: 0 10px;
 }
 
+
+@media only screen and (max-width: 1024px){
+    #hero-image-container{
+        background-color: #959191;
+    }
+
+    #hero-image{
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 576px){
     section{
         padding-top: 0;
@@ -364,5 +375,9 @@ footer{
     .contactForm{
         width: 95%;
         padding: 2%;
+    }
+
+    .sectionTopMargin:first-child{
+        margin-top: 0;
     }
 }
