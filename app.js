@@ -20,6 +20,7 @@ async function initialize() {
                 throw err;
             } else {
                 await sqlAccess.query(data, (error, result) => {
+                    log.debug("Migrated successfully file ", filePath);
                     if(error){
                         throw error;
                     }
