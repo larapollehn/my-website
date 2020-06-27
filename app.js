@@ -8,18 +8,18 @@ const contactRouter = require('./src/routes/ContactRouter');
 const projectRouter = require('./src/routes/ProjectRouter');
 const log = require("./src/log/Logger");
 
-function initialize() {
+async function initialize() {
     log.debug("Start initializing database")
     const files = fs.readdirSync('scripts');
     files.sort();
     for (let i = 0; i < files.length; i++) {
         const filePath = path.join("scripts", files[i]);
         log.debug("Initialize current file ", filePath)
-        fs.readFile(filePath, {encoding: 'utf-8'}, (err, data) => {
+        await fs.readFile(filePath, {encoding: 'utf-8'}, async (err, data) => {
             if (err) {
                 throw err;
             } else {
-                sqlAccess.query(data, (error, result) => {
+                await sqlAccess.query(data, (error, result) => {
                     if(error){
                         throw error;
                     }
