@@ -8,3 +8,5 @@ CREATE TABLE IF NOT EXISTS messages (
     sendertoken VARCHAR(100),
     senderip VARCHAR(15)
 );
+
+ALTER TABLE messages ALTER COLUMN sendertoken TYPE varchar(512);

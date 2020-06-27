@@ -1,1 +1,0 @@
-ALTER TABLE messages ALTER COLUMN sendertoken TYPE varchar(512);
