@@ -1,5 +1,7 @@
 # My Website
 
+My private website which uses GitHub API to present all of my favorites projects. You can also leave me a message. 
+
 ## CI/CD
 
 First time:
