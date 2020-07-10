@@ -27,7 +27,7 @@ nav{
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: rgba(196, 192, 192, 0.89);
+    color: rgba(196, 192, 192, 1);
     font-weight: bold;
 }
 .navbar-light:hover .navbar-nav:hover .nav-link:hover {
