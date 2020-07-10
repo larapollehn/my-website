@@ -2,7 +2,54 @@
 
 My private website which uses GitHub API to present all of my favorites projects. You can also leave me a message. 
 
-## CI/CD
+## GitHub API
+
+You can use the GitHub GraphQL API to retrieve your data. Playing around with the following query in the GraphQL API Explorer https://developer.github.com/v4/explorer/
+
+```
+query{
+    repositoryOwner(login: "larapollehn") {
+      ... on ProfileOwner {
+        pinnedItemsRemaining
+        itemShowcase {
+          items(first: 6) {
+            totalCount
+            edges {
+              node {
+                ... on RepositoryInfo {
+                  homepageUrl
+                }
+                ... on Repository {
+                  openGraphImageUrl 
+                  name
+                  description
+                  url
+                  languages(first: 3) {
+                    totalCount
+                    edges {
+                      node {
+                        name
+                      }
+                    }
+                  }
+                  ... on RepositoryInfo {
+                    homepageUrl
+                  }
+                }
+              }
+            }
+          }
+          hasPinnedItems
+        }
+      }
+      avatarUrl
+    }
+  }
+```
+
+## CI/CD with Travis
+
+I use Travis-CI to automate my deploying process. 
 
 First time:
 - Install Ruby and Gem on your local computer: `sudo apt install ruby ruby-dev -y`
