@@ -1,4 +1,4 @@
-const redisAccess = require('../data/RedisAccess');
+import {redisAccess} from '../data/RedisAccess';
 import log from '../log/Logger';
 
 const axios = require('axios');
@@ -7,6 +7,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const PROJECT_KEY = "project_data";
 const CACHE_TTL = 60 * 60 * 24;
 console.assert(GITHUB_TOKEN !== null && GITHUB_TOKEN !== undefined, 'GITHUB_TOKEN is not set');
+
 const QUERY =
     `query{
                       repositoryOwner(login: "larapollehn") {

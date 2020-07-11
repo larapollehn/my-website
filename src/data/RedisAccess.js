@@ -1,7 +1,7 @@
 const redis = require('redis');
-const log = require("../log/Logger");
+import log from "../log/Logger";
 
-const redis_client = redis.createClient(
+ export const redisAccess = redis.createClient(
     {
         host: process.env.REDIS_HOST || 'localhost',
         port: 6379
@@ -9,4 +9,3 @@ const redis_client = redis.createClient(
 );
 
 log.debug("Using redis' client with following information", redis_client);
-module.exports = redis_client;

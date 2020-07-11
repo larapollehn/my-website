@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const sqlAccess = require('./src/data/SQLAccess');
+import sqlAccess from './src/data/SQLAccess';
 import contactRouter from "./src/routes/ContactRouter";
 import projectRouter from "./src/routes/ProjectRouter";
 import log from "./src/log/Logger";
