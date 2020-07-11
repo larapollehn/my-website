@@ -1,8 +1,7 @@
 const express = require('express');
-const contactService = require('./../services/ContactServices');
+import {verifyRecaptcha, sendEmail, saveMessage} from "../services/ContactServices";
 
 const contactRouter = express.Router();
+contactRouter.post('/contact', verifyRecaptcha, sendEmail, saveMessage);
 
-contactRouter.post('/contact', contactService.sendMail)
-
-module.exports = contactRouter;
+export default contactRouter;

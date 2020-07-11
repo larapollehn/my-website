@@ -1,7 +1,7 @@
 const axios = require('axios');
 const nodemailer = require("nodemailer");
-const sqlAccess = require('../data/SQLAccess');
-const log = require("../log/Logger");
+import sqlAccess from '../data/SQLAccess';
+import log from "../log/Logger";
 
 const RECAPTCHA_TOKEN = process.env.RECAPTCHA_TOKEN;
 const EMAILPW = process.env.MAILPWD;
@@ -41,33 +41,30 @@ log.debug("Contact service with receiver's email:", MUST_VERIFY_MESSAGE);
  * @param expressRequest contains google recaptcha token and user input from contact form
  * @param expressResponse
  */
-const sendMail = (expressRequest, expressResponse) => {
+export const verifyRecaptcha = async (expressRequest, expressResponse, next) => {
     log.debug("Incoming message for owner from contact form");
     if (MUST_VERIFY_MESSAGE === 'true') {
         log.debug("Incoming message must be verified. Verification now.");
-
         const obtainedToken = expressRequest.body["token"]; //token for verifying with google recaptcha
         log.debug("Obtained token to verify", obtainedToken);
 
         // post to google to verify user
-        axios.post('https://www.google.com/recaptcha/api/siteverify?' + 'secret=' + RECAPTCHA_TOKEN + '&response=' + obtainedToken)
-            .then((googleResponse) => {
-                if (googleResponse.data['success'] === true) {
-                    log.debug("Message verified successfully", googleResponse.data);
-                    processMessages(expressRequest, expressResponse);
-                } else {
-                    log.debug("Message can not be verified", googleResponse.data);
-                    expressResponse.status(400).send('Verification not a success');
-                }
-            }).catch((error) => {
-            log.error("Can not verify user", error);
-            expressResponse.status(500).send(JSON.stringify(error));
-        });
-
+        try {
+            const googleResponse = await axios.post('https://www.google.com/recaptcha/api/siteverify?' + 'secret=' + RECAPTCHA_TOKEN + '&response=' + obtainedToken);
+            log.debug("Message verified successfully", googleResponse.data);
+            if (googleResponse.data['success'] === true) {
+                next();
+            } else {
+                return expressResponse.status(400).send('Verification not a success');
+            }
+        }catch(e){
+            log.debug("Message can not be verified", googleResponse.data);
+            return expressResponse.status(400).send('Verification not a success');
+        }
     } else {
         log.warn("The current mode allows every message to reach the user. If this is not intended, please turn the filter on to avoid spam.");
         log.debug("Incoming message does not have to be verified. Process to save message in database and send message to owner");
-        processMessages(expressRequest, expressResponse);
+        next();
     }
 }
 
@@ -77,33 +74,24 @@ const sendMail = (expressRequest, expressResponse) => {
  * @param expressRequest contains message from contact form
  * @param expressResponse
  */
-function processMessages(expressRequest, expressResponse) {
-    notify(expressRequest).then(() => {
-        log.debug("Notifying user is successful. Process to save Message");
-        saveMessage(expressRequest, expressResponse);
-    }).catch((mailError) => {
-        log.error("Notifying user failed. Following error was sent back: ", mailError);
-        expressResponse.status(400).send(JSON.stringify(mailError));
-    })
-}
+export async function sendEmail(expressRequest, expressResponse, next) {
+    try {
+        const senderName = expressRequest.body['sendername'];
+        const senderEmail = expressRequest.body['sendermail'];
+        const subject = expressRequest.body['subject'];
+        const message = expressRequest.body['message'];
 
-/**
- * send mail with contact message to website owner
- * @param expressRequest contains input from message contact form
- * @returns {Promise<Cancel> | string | Promise<any> | void}
- */
-function notify(expressRequest) {
-    const senderName = expressRequest.body['sendername'];
-    const senderEmail = expressRequest.body['sendermail'];
-    const subject = expressRequest.body['subject'];
-    const message = expressRequest.body['message'];
-
-    return transporter.sendMail({
-        from: SENDER,
-        to: RECEIVER,
-        subject: "Contact email from your website",
-        text: `From: ${senderName} \n Mail: ${senderEmail} \n Subject: ${subject} \n Message: ${message}`
-    });
+        await transporter.sendMail({
+            from: SENDER,
+            to: RECEIVER,
+            subject: "Contact email from your website",
+            text: `From: ${senderName} \n Mail: ${senderEmail} \n Subject: ${subject} \n Message: ${message}`
+        });
+        next();
+    }catch (e) {
+        log.error("Notifying user failed. Following error was sent back: ", e);
+        expressResponse.status(400).send(JSON.stringify(e));
+    }
 }
 
 /**
@@ -111,7 +99,7 @@ function notify(expressRequest) {
  * @param expressRequest
  * @param expressResponse
  */
-function saveMessage(expressRequest, expressResponse) {
+export async function saveMessage(expressRequest, expressResponse) {
     const obtainedToken = expressRequest.body["token"];
     const senderName = expressRequest.body['sendername'];
     const senderEmail = expressRequest.body['sendermail'];
@@ -119,23 +107,16 @@ function saveMessage(expressRequest, expressResponse) {
     const message = expressRequest.body['message'];
     const ip = expressRequest.connection.remoteAddress;
     log.debug("Following message was sent to user and will be persisted: ", ip, senderName, senderEmail, subject, message);
-    sqlAccess
-        .query({name: "new-message",
+    try {
+        await sqlAccess.query({
+            name: "new-message",
             text: 'INSERT INTO messages (sendername, email, subject, message, senddate, sendertoken, senderip) VALUES ($1, $2, $3, $4, $5, $6, $7)',
-            values: [senderName, senderEmail, subject, message, new Date().toISOString(), obtainedToken, ip]},
-            (error, result) => {
-                if (error) {
-                    log.error("Message could not be persisted, error: ", error);
-                    expressResponse.status(500).send("An error happened.")
-                } else {
-                    log.debug("Message persisted successful.");
-                    expressResponse.status(201).send(`Message sent trough contact form was stored in database`);
-                }
-            }
-        )
-}
-
-
-module.exports = {
-    sendMail: sendMail
+            values: [senderName, senderEmail, subject, message, new Date().toISOString(), obtainedToken, ip]
+        });
+        log.debug("Message persisted successful.");
+        expressResponse.status(201).send(`Message sent trough contact form was stored in database`);
+    }catch(error){
+        log.error("Message could not be persisted, error: ", error);
+        expressResponse.status(500).send("An error happened.")
+    }
 }

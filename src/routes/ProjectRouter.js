@@ -1,8 +1,8 @@
 const express = require('express');
-const projectService = require('./../services/ProjectServices');
+import {getProjectsFromRedis, getProjectFromGitHub} from "../services/ProjectServices";
 
 const projectRouter = express.Router();
 
-projectRouter.get('/projects', projectService.getProjects);
+projectRouter.get('/projects', getProjectsFromRedis, getProjectFromGitHub);
 
-module.exports = projectRouter;
+export default projectRouter;
