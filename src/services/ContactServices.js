@@ -126,7 +126,7 @@ async function saveMessage(expressRequest, expressResponse) {
     }
 }
 
-async function activateWebHook(expressRequest, next) {
+async function activateWebHook(expressRequest, expressResponse, next) {
     try {
         const senderName = expressRequest.body['sendername'];
         const senderEmail = expressRequest.body['sendermail'];
