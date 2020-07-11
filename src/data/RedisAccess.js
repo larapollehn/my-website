@@ -1,4 +1,4 @@
-const redis = require('redis');
+const redis = require('async-redis');
 const log = require("../log/Logger");
 
 const redisAccess = redis.createClient(

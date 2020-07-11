@@ -62,7 +62,7 @@ async function getProjectsFromRedis(expressRequest, expressResponse, next) {
     try {
         const reply = await redisAccess.get(PROJECT_KEY);
         log.debug('Redis Cache is checked for stored data')
-        log.debug('Repo Data was found in Cache and is returned');
+        log.debug('Repo Data was found in Cache and is returned', reply);
         if (reply) {
             return expressResponse.send(JSON.parse(reply));
         } else {

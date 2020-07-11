@@ -31,16 +31,17 @@ function sendMail() {
     }
 }
 
-function getProjectData() {
-    axios.get('/api/v1/projects')
-        .then((response) => {
-            displayAvatarIcon(response.data);
-            displayProjects(response.data);
-        }).catch((error) => {
-        log.debug('Error while fetching project data', error);
-    });
-}
+async function getProjectData() {
+    try{
+        const projectData = await axios.get('/api/v1/projects');
+        log.debug("Fetched projectData in frontend", projectData);
+        displayAvatarIcon(projectData.data);
+        displayProjects(projectData.data);
+    }catch (e) {
+        log.debug("Project data from github could not be fetched from api", e);
+    }
 
+}
 getProjectData();
 
 function displayAvatarIcon(projectData) {

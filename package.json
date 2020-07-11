@@ -12,6 +12,7 @@
   "author": "lara pollehn - me",
   "license": "ISC",
   "dependencies": {
+    "async-redis": "^1.1.7",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
