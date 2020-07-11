@@ -13,6 +13,7 @@ before_install:
 - chmod 0600 deploy_rsa
 script:
 - cp .env.example .env
+- npm run lint
 - npm run test
 - eval $(ssh-agent -s)
 - ssh-add deploy_rsa

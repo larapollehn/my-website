@@ -1,12 +1,10 @@
-const redis = require('async-redis');
+const redis = require("async-redis");
 const log = require("../log/Logger");
 
-const redisAccess = redis.createClient(
-    {
-        host: process.env.REDIS_HOST || 'localhost',
-        port: 6379
-    }
-);
+const redisAccess = redis.createClient({
+    host: process.env.REDIS_HOST || "localhost",
+    port: 6379,
+});
 
 log.debug("Using redis' client with following information", redisAccess);
 

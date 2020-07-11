@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "NODE_ENV=production node server.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ./src/**/*.js",
+    "fix": "eslint --fix ./src/**/*.js"
   },
   "keywords": [],
   "author": "lara pollehn - me",
@@ -26,6 +28,8 @@
   },
   "devDependencies": {
     "eslint": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "jest": "^26.1.0",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"

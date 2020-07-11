@@ -1,15 +1,14 @@
-const redisAccess = require('../data/RedisAccess');
-const log = require('../log/Logger');
+const axios = require("axios");
+const assert = require("assert");
+const redisAccess = require("../data/RedisAccess");
+const log = require("../log/Logger");
 
-const axios = require('axios');
-
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const { GITHUB_TOKEN } = process.env;
 const PROJECT_KEY = "project_data";
 const CACHE_TTL = 60 * 60 * 24;
-console.assert(GITHUB_TOKEN !== null && GITHUB_TOKEN !== undefined, 'GITHUB_TOKEN is not set');
+assert(GITHUB_TOKEN !== null && GITHUB_TOKEN !== undefined, "GITHUB_TOKEN is not set");
 
-const QUERY =
-    `query{
+const QUERY = `query{
                       repositoryOwner(login: "larapollehn") {
                         ... on ProfileOwner {
                           pinnedItemsRemaining
@@ -58,18 +57,17 @@ const QUERY =
  * @returns {Promise<*>}
  */
 async function getProjectsFromRedis(expressRequest, expressResponse, next) {
-    log.debug('Github pinned Repo Data is needed');
+    log.debug("Github pinned Repo Data is needed");
     try {
         const reply = await redisAccess.get(PROJECT_KEY);
-        log.debug('Redis Cache is checked for stored data')
-        log.debug('Repo Data was found in Cache and is returned', reply);
+        log.debug("Redis Cache is checked for stored data");
+        log.debug("Repo Data was found in Cache and is returned", reply);
         if (reply) {
             return expressResponse.send(JSON.parse(reply));
-        } else {
-            next();
         }
+            next();
     } catch (e) {
-        log.error('Repo Data was NOT found in Cache and could not be fetched from github APi with query');
+        log.error("Repo Data was NOT found in Cache and could not be fetched from github APi with query");
         next();
     }
 }
@@ -77,25 +75,25 @@ async function getProjectsFromRedis(expressRequest, expressResponse, next) {
 async function getProjectFromGitHub(expressResponse) {
     try {
         const githubResponse = await axios({
-            method: 'POST',
-            url: 'https://api.github.com/graphql',
+            method: "POST",
+            url: "https://api.github.com/graphql",
             headers: {
-                "Authorization": `Bearer ${GITHUB_TOKEN}`
+                Authorization: `Bearer ${GITHUB_TOKEN}`,
             },
             data: {
-                query: QUERY
-            }
+                query: QUERY,
+            },
         });
-        log.debug('Github responded with', githubResponse.data);
+        log.debug("Github responded with", githubResponse.data);
         redisAccess.setex(PROJECT_KEY, CACHE_TTL, JSON.stringify(githubResponse.data));
         return expressResponse.status(200).send(githubResponse.data);
     } catch (e) {
-        log.error('Could not get project data from github', e)
+        log.error("Could not get project data from github", e);
         return expressResponse.status(500).send(e.message);
     }
 }
 
 module.exports = {
     getProjectsFromRedis,
-    getProjectFromGitHub
-}
+    getProjectFromGitHub,
+};
