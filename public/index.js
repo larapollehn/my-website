@@ -42,7 +42,6 @@ async function getProjectData() {
     }
 
 }
-getProjectData();
 
 function displayAvatarIcon(projectData) {
     let avatarUrl = projectData['data']['repositoryOwner']['avatarUrl'];
@@ -92,3 +91,5 @@ function capitalizeName(name) {
     }
     return capitalizedWords.join(' ');
 }
+
+getProjectData();
