@@ -10,3 +10,5 @@ CREATE TABLE IF NOT EXISTS messages (
 );
 
 ALTER TABLE messages ALTER COLUMN sendertoken TYPE varchar(512);
+
+ALTER TABLE messages ALTER COLUMN senderip TYPE varchar(64);

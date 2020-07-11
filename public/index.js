@@ -17,10 +17,10 @@ function sendMail() {
                 'message': message
             }
         }).then((response) => {
-            console.log('Verification is a success', response.data);
+            console.log('Message sent successfully', response.data);
             toastr.success('Thanks for sending me a message!', 'It worked');
         }).catch((error) => {
-            console.log('Verification NOT a success', error.response);
+            console.log('Message could not be sent successfully', error.response);
             toastr.error('Refresh the page and please try again.', 'Something went wrong');
         });
     } else {
