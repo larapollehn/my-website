@@ -1,7 +1,7 @@
 const axios = require('axios');
 const nodemailer = require("nodemailer");
-import sqlAccess from '../data/SQLAccess';
-import log from "../log/Logger";
+const sqlAccess = require('../data/SQLAccess');
+const log = require("../log/Logger");
 
 const RECAPTCHA_TOKEN = process.env.RECAPTCHA_TOKEN;
 const EMAILPW = process.env.MAILPWD;
@@ -37,11 +37,13 @@ log.debug("Contact service with recaptcha's secret:", RECAPTCHA_TOKEN);
 log.debug("Contact service with receiver's email:", MUST_VERIFY_MESSAGE);
 
 /**
- * verifies user with reCaptcha and processes contact message if successful
- * @param expressRequest contains google recaptcha token and user input from contact form
+ *  verifies user with reCaptcha and processes contact message if successful
+ * @param expressRequest
  * @param expressResponse
+ * @param next
+ * @returns {Promise<*>}
  */
-export const verifyRecaptcha = async (expressRequest, expressResponse, next) => {
+const verifyRecaptcha = async (expressRequest, expressResponse, next) => {
     log.debug("Incoming message for owner from contact form");
     if (MUST_VERIFY_MESSAGE === 'true') {
         log.debug("Incoming message must be verified. Verification now.");
@@ -71,10 +73,12 @@ export const verifyRecaptcha = async (expressRequest, expressResponse, next) => 
 /**
  * uses func notify to send mail to website owner with nodemailer
  * if successful the message is saved to the database
- * @param expressRequest contains message from contact form
+ * @param expressRequest
  * @param expressResponse
+ * @param next
+ * @returns {Promise<void>}
  */
-export async function sendEmail(expressRequest, expressResponse, next) {
+async function sendEmail(expressRequest, expressResponse, next) {
     try {
         const senderName = expressRequest.body['sendername'];
         const senderEmail = expressRequest.body['sendermail'];
@@ -99,7 +103,7 @@ export async function sendEmail(expressRequest, expressResponse, next) {
  * @param expressRequest
  * @param expressResponse
  */
-export async function saveMessage(expressRequest, expressResponse) {
+async function saveMessage(expressRequest, expressResponse) {
     const obtainedToken = expressRequest.body["token"];
     const senderName = expressRequest.body['sendername'];
     const senderEmail = expressRequest.body['sendermail'];
@@ -120,3 +124,9 @@ export async function saveMessage(expressRequest, expressResponse) {
         expressResponse.status(500).send("An error happened.")
     }
 }
+
+module.exports = {
+  verifyRecaptcha,
+  sendEmail,
+  saveMessage
+};

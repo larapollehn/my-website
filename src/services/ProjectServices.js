@@ -1,5 +1,5 @@
-import {redisAccess} from '../data/RedisAccess';
-import log from '../log/Logger';
+const redisAccess = require('../data/RedisAccess');
+const log = require('../log/Logger');
 
 const axios = require('axios');
 
@@ -57,7 +57,7 @@ const QUERY =
  * @param next
  * @returns {Promise<*>}
  */
-export async function getProjectsFromRedis(expressRequest, expressResponse, next) {
+async function getProjectsFromRedis(expressRequest, expressResponse, next) {
     log.debug('Github pinned Repo Data is needed');
     try {
         const reply = await redisAccess.get(PROJECT_KEY);
@@ -74,7 +74,7 @@ export async function getProjectsFromRedis(expressRequest, expressResponse, next
     }
 }
 
-export async function getProjectFromGitHub(expressResponse) {
+async function getProjectFromGitHub(expressResponse) {
     try {
         const githubResponse = await axios({
             method: 'POST',
@@ -95,4 +95,7 @@ export async function getProjectFromGitHub(expressResponse) {
     }
 }
 
-
+module.exports = {
+    getProjectsFromRedis,
+    getProjectFromGitHub
+}

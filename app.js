@@ -3,10 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-import sqlAccess from './src/data/SQLAccess';
-import contactRouter from "./src/routes/ContactRouter";
-import projectRouter from "./src/routes/ProjectRouter";
-import log from "./src/log/Logger";
+const sqlAccess = require('./src/data/SQLAccess');
+const contactRouter = require("./src/routes/ContactRouter");
+const projectRouter = require("./src/routes/ProjectRouter");
+const log = require("./src/log/Logger");
 
 async function initialize() {
     log.debug("Start initializing database")

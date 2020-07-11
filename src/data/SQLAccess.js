@@ -1,5 +1,5 @@
 const Pool = require('pg').Pool;
-import log from "../log/Logger";
+const log = require("../log/Logger");
 
 const pool = new Pool({
     user: process.env.POSTGRES_USER || 'postgres',
@@ -11,7 +11,7 @@ const pool = new Pool({
 
 log.debug("Using SQL's pool with following information:", pool.options.host, pool.options.database, pool.options.user);
 
-export default pool;
+module.exports = pool;
 
 
 

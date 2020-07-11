@@ -27,4 +27,4 @@ log.setLevel(process.env.LOG_LEVEL || "info");
 
 log.info("Current logging level", process.env.LOG_LEVEL);
 
-export default log;
+module.exports = log;
