@@ -1,3 +1,6 @@
+log.setLevel("debug");
+log.debug("Frontend logging on");
+
 function sendMail() {
     const token = grecaptcha.getResponse();
     if(token) {
@@ -17,10 +20,10 @@ function sendMail() {
                 'message': message
             }
         }).then((response) => {
-            console.log('Message sent successfully', response.data);
+            log.debug('Message sent successfully', response.data);
             toastr.success('Thanks for sending me a message!', 'It worked');
         }).catch((error) => {
-            console.log('Message could not be sent successfully', error.response);
+            log.debug('Message could not be sent successfully', error.response);
             toastr.error('Refresh the page and please try again.', 'Something went wrong');
         });
     } else {
@@ -34,7 +37,7 @@ function getProjectData() {
             displayAvatarIcon(response.data);
             displayProjects(response.data);
         }).catch((error) => {
-        console.log('Error while fetching project data', error);
+        log.debug('Error while fetching project data', error);
     });
 }
 
