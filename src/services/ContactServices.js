@@ -9,6 +9,7 @@ const SENDER = process.env.SENDER;
 const RECEIVER = process.env.RECEIVER;
 const HOST = process.env.HOST;
 const MUST_VERIFY_MESSAGE = process.env.MUST_VERIFY_MESSAGE;
+const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK;
 
 /**
  * tranporter instance for sending mails with func notify
@@ -59,7 +60,7 @@ const verifyRecaptcha = async (expressRequest, expressResponse, next) => {
             } else {
                 return expressResponse.status(400).send('Verification not a success');
             }
-        }catch(e){
+        } catch (e) {
             log.debug("Message can not be verified", googleResponse.data);
             return expressResponse.status(400).send('Verification not a success');
         }
@@ -92,7 +93,7 @@ async function sendEmail(expressRequest, expressResponse, next) {
             text: `From: ${senderName} \n Mail: ${senderEmail} \n Subject: ${subject} \n Message: ${message}`
         });
         next();
-    }catch (e) {
+    } catch (e) {
         log.error("Notifying user failed. Following error was sent back: ", e);
         expressResponse.status(400).send(JSON.stringify(e));
     }
@@ -119,14 +120,38 @@ async function saveMessage(expressRequest, expressResponse) {
         });
         log.debug("Message persisted successful.");
         expressResponse.status(201).send(`Message sent trough contact form was stored in database`);
-    }catch(error){
+    } catch (error) {
         log.error("Message could not be persisted, error: ", error);
         expressResponse.status(500).send("An error happened.")
     }
 }
 
+async function activateWebHook(expressRequest, next) {
+    try {
+        const senderName = expressRequest.body['sendername'];
+        const senderEmail = expressRequest.body['sendermail'];
+        const subject = expressRequest.body['subject'];
+        const message = expressRequest.body['message'];
+        await axios({
+            method: "POST",
+            url: SLACK_WEBHOOK,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            data: {
+                text: `From: ${senderName} \n Mail: ${senderEmail} \n Subject: ${subject} \n Message: ${message}`
+            }
+        });
+    } catch (e) {
+        log.debug("Could not send message via slack webhook", e);
+    } finally {
+        next();
+    }
+}
+
 module.exports = {
-  verifyRecaptcha,
-  sendEmail,
-  saveMessage
+    verifyRecaptcha,
+    sendEmail,
+    saveMessage,
+    activateWebHook
 };
