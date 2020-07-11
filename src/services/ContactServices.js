@@ -126,6 +126,14 @@ async function saveMessage(expressRequest, expressResponse) {
     }
 }
 
+/**
+ * uses the slack webhook to send the message to the slack channel contact-messages
+ * in workspace larapollehn.de
+ * @param expressRequest
+ * @param expressResponse
+ * @param next
+ * @returns {Promise<void>}
+ */
 async function activateWebHook(expressRequest, expressResponse, next) {
     try {
         const senderName = expressRequest.body['sendername'];
