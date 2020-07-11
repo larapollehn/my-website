@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/larapollehn/my-website.svg?branch=master)](https://travis-ci.com/larapollehn/my-website)
 # My Website
 
 My private website which uses GitHub API to present all of my favorites projects. You can also leave me a message. 
