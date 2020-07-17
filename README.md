@@ -58,8 +58,14 @@ First time:
 - Login: `travis login --pro`
 
 For every other project
-- Generate SSH key for deploying purpose: `ssh-keygen -t rsa -b 4096 -f deploy_rsa`
-- Add public key to deploy server: `ssh-copy-id -i deploy_rsa.pub user@host.domain`
-- Encrypt private key and upload the encryption password to travis' server: `travis encrypt-file deploy_rsa`
+- Generate SSH key for deploying purpose: `ssh-keygen -t rsa -b 4096 -f deploykey`
+- Add public key to deploy server: `ssh-copy-id -i deploykey.pub lara@larapollehn`
+- Encrypt private key and upload the encryption password to travis' server: `travis encrypt-file deploykey --com`
 - Delete public and private key. Keep the encrypted private key.
-- Configure `.travis.yml`
+- Configure `.travis.yml` with
+
+```
+before_install: 
+- openssl aes-256-cbc -K $encrypted_db2095f63ba3_key -iv $encrypted_db2095f63ba3_iv -in deploykey.enc -out deploykey -d
+- chmod 0600 deploykey
+```
